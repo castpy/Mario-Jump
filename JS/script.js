@@ -1,5 +1,6 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
+const musica = new Audio('/AUDIO/musica_tema.ogg')
 
 const jump = () => {
   mario.classList.add('jump');
@@ -11,6 +12,7 @@ const jump = () => {
 
 
 const loop = setInterval(() => {
+    musica.play()
     const pipe_position = pipe.offsetLeft;
     const mario_position = +window.getComputedStyle(mario).bottom.replace('px', '');
 
@@ -26,7 +28,9 @@ const loop = setInterval(() => {
         mario.style.width = '100px'
         mario.style.marginLeft = '50px'
 
+        musica.pause();
         clearInterval(loop)
+        stop = true
     }
 
 }, 10)
